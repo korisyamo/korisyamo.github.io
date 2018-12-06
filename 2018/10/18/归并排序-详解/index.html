@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="算法复杂度 也许有很多同学说，原来也学过很多O（n^2）或者O（n^3）的排序算法，有的可能优化一下能到O（n）的时间复杂度，但是在计算机中都是很快的执行完了，没有看出来算法优化的步骤，那么我想说有可能是你当时使用的测试用例太小了，我们可以简单的做一下比较： 当数据量很大的时候 nlogn的优势将会比n^2 越来越大，当n=10^5的时候，nlogn 的算法要比n^2 的算法快6000倍，那么60">
+<meta name="description" content="算法复杂度也许有很多同学说，原来也学过很多O（n^2）或者O（n^3）的排序算法，有的可能优化一下能到O（n）的时间复杂度，但是在计算机中都是很快的执行完了，没有看出来算法优化的步骤，那么我想说有可能是你当时使用的测试用例太小了，我们可以简单的做一下比较： 当数据量很大的时候 nlogn的优势将会比n^2 越来越大，当n=10^5的时候，nlogn 的算法要比n^2 的算法快6000倍，那么600">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="归并排序 详解">
 <meta property="og:url" content="http://yoursite.com/2018/10/18/归并排序-详解/index.html">
 <meta property="og:site_name" content="第一口浮生茶">
-<meta property="og:description" content="算法复杂度 也许有很多同学说，原来也学过很多O（n^2）或者O（n^3）的排序算法，有的可能优化一下能到O（n）的时间复杂度，但是在计算机中都是很快的执行完了，没有看出来算法优化的步骤，那么我想说有可能是你当时使用的测试用例太小了，我们可以简单的做一下比较： 当数据量很大的时候 nlogn的优势将会比n^2 越来越大，当n=10^5的时候，nlogn 的算法要比n^2 的算法快6000倍，那么60">
+<meta property="og:description" content="算法复杂度也许有很多同学说，原来也学过很多O（n^2）或者O（n^3）的排序算法，有的可能优化一下能到O（n）的时间复杂度，但是在计算机中都是很快的执行完了，没有看出来算法优化的步骤，那么我想说有可能是你当时使用的测试用例太小了，我们可以简单的做一下比较： 当数据量很大的时候 nlogn的优势将会比n^2 越来越大，当n=10^5的时候，nlogn 的算法要比n^2 的算法快6000倍，那么600">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/10/18/归并排序-详解/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/18/归并排序-详解/2.png">
@@ -100,10 +100,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/10/18/归并排序-详解/9.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/18/归并排序-详解/10.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/18/归并排序-详解/11.png">
-<meta property="og:updated_time" content="2018-10-21T03:17:53.800Z">
+<meta property="og:updated_time" content="2018-12-06T11:10:52.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="归并排序 详解">
-<meta name="twitter:description" content="算法复杂度 也许有很多同学说，原来也学过很多O（n^2）或者O（n^3）的排序算法，有的可能优化一下能到O（n）的时间复杂度，但是在计算机中都是很快的执行完了，没有看出来算法优化的步骤，那么我想说有可能是你当时使用的测试用例太小了，我们可以简单的做一下比较： 当数据量很大的时候 nlogn的优势将会比n^2 越来越大，当n=10^5的时候，nlogn 的算法要比n^2 的算法快6000倍，那么60">
+<meta name="twitter:description" content="算法复杂度也许有很多同学说，原来也学过很多O（n^2）或者O（n^3）的排序算法，有的可能优化一下能到O（n）的时间复杂度，但是在计算机中都是很快的执行完了，没有看出来算法优化的步骤，那么我想说有可能是你当时使用的测试用例太小了，我们可以简单的做一下比较： 当数据量很大的时候 nlogn的优势将会比n^2 越来越大，当n=10^5的时候，nlogn 的算法要比n^2 的算法快6000倍，那么600">
 <meta name="twitter:image" content="http://yoursite.com/2018/10/18/归并排序-详解/1.png">
 
 
@@ -338,40 +338,34 @@
       
 
       
-        <p><strong>算法复杂度</strong></p>
-<p>也许有很多同学说，原来也学过很多O（n^2）或者O（n^3）的排序算法，有的可能优化一下能到O（n）的时间复杂度，但是在计算机中都是很快的执行完了，没有看出来算法优化的步骤，那么我想说有可能是你当时使用的测试用例太小了，我们可以简单的做一下比较：<br><img src="/2018/10/18/归并排序-详解/1.png" alt=""></p>
+        <h2 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a><strong>算法复杂度</strong></h2><p>也许有很多同学说，原来也学过很多O（n^2）或者O（n^3）的排序算法，有的可能优化一下能到O（n）的时间复杂度，但是在计算机中都是很快的执行完了，没有看出来算法优化的步骤，那么我想说有可能是你当时使用的测试用例太小了，我们可以简单的做一下比较：<br><img src="/2018/10/18/归并排序-详解/1.png" alt=""></p>
 <p>当数据量很大的时候 nlogn的优势将会比n^2 越来越大，当n=10^5的时候，nlogn 的算法要比n^2 的算法快6000倍，那么6000倍是什么概念呢，就是如果我们要处理一个数据集，用nlogn的算法要处理一天的话，用n^2的算法将要处理6020天。这就基本相当于是15年。一个优化改进的算法可能比一个比一个笨的算法速度快了许多，这就是为什么我们要学习算法。</p>
-<p><strong>核心思想：分治。</strong></p>
-<p><strong>下面我们来看归并排序的思路（先讲思路再来具体讲归并的细节）：</strong></p>
+<h2 id="核心思想：分治。"><a href="#核心思想：分治。" class="headerlink" title="核心思想：分治。"></a><strong>核心思想：分治。</strong></h2><h2 id="下面我们来看归并排序的思路（先讲思路再来具体讲归并的细节）："><a href="#下面我们来看归并排序的思路（先讲思路再来具体讲归并的细节）：" class="headerlink" title="下面我们来看归并排序的思路（先讲思路再来具体讲归并的细节）："></a><strong>下面我们来看归并排序的思路（先讲思路再来具体讲归并的细节）：</strong></h2><hr>
+<h3 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a><strong>归并排序（Merge Sort）</strong></h3><p><img src="/2018/10/18/归并排序-详解/2.png" alt=""></p>
 <hr>
-<p><strong>归并排序（Merge Sort）</strong><br><img src="/2018/10/18/归并排序-详解/2.png" alt=""></p>
+<h3 id="当我们要排序这样一个数组的时候，归并排序法首先将这个数组分成一半。如图："><a href="#当我们要排序这样一个数组的时候，归并排序法首先将这个数组分成一半。如图：" class="headerlink" title="当我们要排序这样一个数组的时候，归并排序法首先将这个数组分成一半。如图："></a><strong>当我们要排序这样一个数组的时候，归并排序法首先将这个数组分成一半。如图：</strong></h3><p><img src="/2018/10/18/归并排序-详解/3.png" alt=""></p>
 <hr>
-<p><strong>当我们要排序这样一个数组的时候，归并排序法首先将这个数组分成一半。如图：</strong><br><img src="/2018/10/18/归并排序-详解/3.png" alt=""></p>
+<h3 id="然后想办法把左边的数组给排序，右边的数组给排序，之后呢再将它们归并起来。当然了当我们对左边的数组和右边的素组进行排序的时候，再分别将左边的数组和右边的数组分成一半，然后对每一个部分先排序，再归并。如图："><a href="#然后想办法把左边的数组给排序，右边的数组给排序，之后呢再将它们归并起来。当然了当我们对左边的数组和右边的素组进行排序的时候，再分别将左边的数组和右边的数组分成一半，然后对每一个部分先排序，再归并。如图：" class="headerlink" title="然后想办法把左边的数组给排序，右边的数组给排序，之后呢再将它们归并起来。当然了当我们对左边的数组和右边的素组进行排序的时候，再分别将左边的数组和右边的数组分成一半，然后对每一个部分先排序，再归并。如图："></a><strong>然后想办法把左边的数组给排序，右边的数组给排序，之后呢再将它们归并起来。当然了当我们对左边的数组和右边的素组进行排序的时候，再分别将左边的数组和右边的数组分成一半，然后对每一个部分先排序，再归并。如图：</strong></h3><p><img src="/2018/10/18/归并排序-详解/4.png" alt=""></p>
 <hr>
-<p><strong>然后想办法把左边的数组给排序，右边的数组给排序，之后呢再将它们归并起来。当然了当我们对左边的数组和右边的素组进行排序的时候，再分别将左边的数组和右边的数组分成一半，然后对每一个部分先排序，再归并。如图：</strong><br><img src="/2018/10/18/归并排序-详解/4.png" alt=""></p>
+<h3 id="对于上面的每一个部分呢，我们依然是先将他们分半，再归并，如图："><a href="#对于上面的每一个部分呢，我们依然是先将他们分半，再归并，如图：" class="headerlink" title="对于上面的每一个部分呢，我们依然是先将他们分半，再归并，如图："></a><strong>对于上面的每一个部分呢，我们依然是先将他们分半，再归并，如图：</strong></h3><p><img src="/2018/10/18/归并排序-详解/5.png" alt=""></p>
 <hr>
-<p><strong>对于上面的每一个部分呢，我们依然是先将他们分半，再归并，如图：</strong><br><img src="/2018/10/18/归并排序-详解/5.png" alt=""></p>
+<h3 id="分到一定细度的时候，每一个部分就只有一个元素了，那么我们此时不用排序，对他们进行一次简单的归并就好了。如图："><a href="#分到一定细度的时候，每一个部分就只有一个元素了，那么我们此时不用排序，对他们进行一次简单的归并就好了。如图：" class="headerlink" title="分到一定细度的时候，每一个部分就只有一个元素了，那么我们此时不用排序，对他们进行一次简单的归并就好了。如图："></a><strong>分到一定细度的时候，每一个部分就只有一个元素了，那么我们此时不用排序，对他们进行一次简单的归并就好了。如图：</strong></h3><p><img src="/2018/10/18/归并排序-详解/6.png" alt=""></p>
 <hr>
-<p><strong>分到一定细度的时候，每一个部分就只有一个元素了，那么我们此时不用排序，对他们进行一次简单的归并就好了。如图：</strong><br><img src="/2018/10/18/归并排序-详解/6.png" alt=""></p>
+<h3 id="归并到上一个层级之后继续归并，归并到更高的层级，如图："><a href="#归并到上一个层级之后继续归并，归并到更高的层级，如图：" class="headerlink" title="归并到上一个层级之后继续归并，归并到更高的层级，如图："></a><strong>归并到上一个层级之后继续归并，归并到更高的层级，如图：</strong></h3><p><img src="/2018/10/18/归并排序-详解/7.png" alt=""></p>
 <hr>
-<p><strong>归并到上一个层级之后继续归并，归并到更高的层级，如图：</strong><br><img src="/2018/10/18/归并排序-详解/7.png" alt=""></p>
+<h3 id="直至最后归并完成。"><a href="#直至最后归并完成。" class="headerlink" title="直至最后归并完成。"></a><strong>直至最后归并完成。</strong></h3><p><img src="/2018/10/18/归并排序-详解/8.png" alt=""></p>
 <hr>
-<p><strong>直至最后归并完成。</strong><br><img src="/2018/10/18/归并排序-详解/8.png" alt=""></p>
-<hr>
-<p><strong>那么如何归并呢？我们是否可以用O（n）的算法将两个数组归并到一起形成一个数组呢？如果可以的话，我们将可以用递归的过程来实现整个归并。这是你想起来很简单但是操作起来并不是那么简单的问题。</strong></p>
-<p><strong>归并细节：</strong></p>
-<p>比如有两个已经排序好的数组，如何将他归并成一个数组？</p>
+<p> <strong>那么如何归并呢？我们是否可以用O（n）的算法将两个数组归并到一起形成一个数组呢？如果可以的话，我们将可以用递归的过程来实现整个归并。这是你想起来很简单但是操作起来并不是那么简单的问题。</strong></p>
+<h2 id="归并细节："><a href="#归并细节：" class="headerlink" title="归并细节："></a><strong>归并细节：</strong></h2><p>比如有两个已经排序好的数组，如何将他归并成一个数组？</p>
 <p><strong>我们可以开辟一个临时数组来辅助我们的归并。也就是说他比我们插入排序也好，选择排序也好多使用了存储的空间，也就是说他需要o（n）的额外空间来完成这个排序。只不过现在计算机中时间的效率要比空间的效率重要的多。无论是内存也好还是硬盘也好可以存储的数据越来越多，所以设计一个算法，时间复杂度是要优先考虑的。</strong></p>
 <hr>
-<p><strong>整体来讲我们要使用三个索引来在数组内进行追踪。</strong><br><img src="/2018/10/18/归并排序-详解/9.png" alt=""></p>
+<h3 id="整体来讲我们要使用三个索引来在数组内进行追踪。"><a href="#整体来讲我们要使用三个索引来在数组内进行追踪。" class="headerlink" title="整体来讲我们要使用三个索引来在数组内进行追踪。"></a><strong>整体来讲我们要使用三个索引来在数组内进行追踪。</strong></h3><p><img src="/2018/10/18/归并排序-详解/9.png" alt=""></p>
 <hr>
-<p><strong>蓝色的箭头表示最终选择的位置，而红色的箭头表示两个数组当前要比较的元素，比如当前是2与1比较，1比2小，所以1放到蓝色的箭头中，蓝色的箭头后移，1的箭头后移。</strong><br><img src="/2018/10/18/归并排序-详解/10.png" alt=""></p>
+<h3 id="蓝色的箭头表示最终选择的位置，而红色的箭头表示两个数组当前要比较的元素，比如当前是2与1比较，1比2小，所以1放到蓝色的箭头中，蓝色的箭头后移，1的箭头后移。"><a href="#蓝色的箭头表示最终选择的位置，而红色的箭头表示两个数组当前要比较的元素，比如当前是2与1比较，1比2小，所以1放到蓝色的箭头中，蓝色的箭头后移，1的箭头后移。" class="headerlink" title="蓝色的箭头表示最终选择的位置，而红色的箭头表示两个数组当前要比较的元素，比如当前是2与1比较，1比2小，所以1放到蓝色的箭头中，蓝色的箭头后移，1的箭头后移。"></a><strong>蓝色的箭头表示最终选择的位置，而红色的箭头表示两个数组当前要比较的元素，比如当前是2与1比较，1比2小，所以1放到蓝色的箭头中，蓝色的箭头后移，1的箭头后移。</strong></h3><p><img src="/2018/10/18/归并排序-详解/10.png" alt=""></p>
 <hr>
-<p><strong>然后2与4比较，2比4小那么2到蓝色的箭头中，蓝色箭头后移，2后移，继续比较…….</strong><br><img src="/2018/10/18/归并排序-详解/11.png" alt=""></p>
+<h3 id="然后2与4比较，2比4小那么2到蓝色的箭头中，蓝色箭头后移，2后移，继续比较……"><a href="#然后2与4比较，2比4小那么2到蓝色的箭头中，蓝色箭头后移，2后移，继续比较……" class="headerlink" title="然后2与4比较，2比4小那么2到蓝色的箭头中，蓝色箭头后移，2后移，继续比较……."></a><strong>然后2与4比较，2比4小那么2到蓝色的箭头中，蓝色箭头后移，2后移，继续比较…….</strong></h3><p><img src="/2018/10/18/归并排序-详解/11.png" alt=""></p>
 <hr>
-<p><strong>归并思路就是这样了，最后唯一需要注意的是那个先比较完的话，那么剩下的直接不需要比较，把后面的直接移上去就可以了，这个需要提前判定一下。</strong></p>
-<p><strong>归并排序代码如下：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">void merge(int a[],int l,int r,int mid)</span><br><span class="line">&#123;</span><br><span class="line">  int aux[r-l+1],i,j,k;</span><br><span class="line">  </span><br><span class="line">  for(k=l;k&lt;=r;k++)</span><br><span class="line">  aux[k-l]=a[k];</span><br><span class="line">  </span><br><span class="line">  i=l;</span><br><span class="line">  j=mid+1;</span><br><span class="line">  for(k=l;k&lt;=r;k++)</span><br><span class="line">  &#123;</span><br><span class="line">  	if(i&gt;mid)</span><br><span class="line">  	&#123;</span><br><span class="line">  		a[k]=aux[j-l];</span><br><span class="line">  		j++;</span><br><span class="line">	  &#125;</span><br><span class="line">	else if(j&gt;r)</span><br><span class="line">	&#123;</span><br><span class="line">		a[k]=aux[i-l];</span><br><span class="line">		i++;</span><br><span class="line">	  &#125;</span><br><span class="line">	else if(aux[i-l]&gt;aux[j-l])</span><br><span class="line">	&#123;</span><br><span class="line">		a[k]=aux[j-l];</span><br><span class="line">		j++;</span><br><span class="line">		&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		a[k]=aux[i-l];</span><br><span class="line">		i++;</span><br><span class="line">			&#125;</span><br><span class="line">				    </span><br><span class="line">  	</span><br><span class="line">	  &#125;	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void merge_sort(int a[],int l,int r)</span><br><span class="line">&#123;</span><br><span class="line">    if(l&gt;=r)</span><br><span class="line">	return ;</span><br><span class="line">	</span><br><span class="line">	int mid=(l+r)/2;</span><br><span class="line">	</span><br><span class="line">	merge_sort(a,l,mid);</span><br><span class="line">	merge_sort(a,mid+1,r);</span><br><span class="line">	merge(a,l,r,mid);	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">void mergesort(int a[],int l,int r)</span><br><span class="line">&#123;</span><br><span class="line">	merge_sort(a,l,r-1);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a[105],n,i;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	</span><br><span class="line">	for(i=0;i&lt;n;i++)</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">	</span><br><span class="line">	mergesort(a,0,n);</span><br><span class="line">	</span><br><span class="line">	for(i=0;i&lt;n;i++)</span><br><span class="line">	printf(&quot;%d &quot;,a[i]);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	return 0;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-
+<h3 id="归并思路就是这样了，最后唯一需要注意的是那个先比较完的话，那么剩下的直接不需要比较，把后面的直接移上去就可以了，这个需要提前判定一下。"><a href="#归并思路就是这样了，最后唯一需要注意的是那个先比较完的话，那么剩下的直接不需要比较，把后面的直接移上去就可以了，这个需要提前判定一下。" class="headerlink" title="归并思路就是这样了，最后唯一需要注意的是那个先比较完的话，那么剩下的直接不需要比较，把后面的直接移上去就可以了，这个需要提前判定一下。"></a><strong>归并思路就是这样了，最后唯一需要注意的是那个先比较完的话，那么剩下的直接不需要比较，把后面的直接移上去就可以了，这个需要提前判定一下。</strong></h3><h2 id="归并排序代码如下："><a href="#归并排序代码如下：" class="headerlink" title="归并排序代码如下："></a><strong>归并排序代码如下：</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">void merge(int a[],int l,int r,int mid)</span><br><span class="line">&#123;</span><br><span class="line">  int aux[r-l+1],i,j,k;</span><br><span class="line">  </span><br><span class="line">  for(k=l;k&lt;=r;k++)</span><br><span class="line">  aux[k-l]=a[k];</span><br><span class="line">  </span><br><span class="line">  i=l;</span><br><span class="line">  j=mid+1;</span><br><span class="line">  for(k=l;k&lt;=r;k++)</span><br><span class="line">  &#123;</span><br><span class="line">  	if(i&gt;mid)</span><br><span class="line">  	&#123;</span><br><span class="line">  		a[k]=aux[j-l];</span><br><span class="line">  		j++;</span><br><span class="line">	  &#125;</span><br><span class="line">	else if(j&gt;r)</span><br><span class="line">	&#123;</span><br><span class="line">		a[k]=aux[i-l];</span><br><span class="line">		i++;</span><br><span class="line">	  &#125;</span><br><span class="line">	else if(aux[i-l]&gt;aux[j-l])</span><br><span class="line">	&#123;</span><br><span class="line">		a[k]=aux[j-l];</span><br><span class="line">		j++;</span><br><span class="line">		&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		a[k]=aux[i-l];</span><br><span class="line">		i++;</span><br><span class="line">			&#125;</span><br><span class="line">				    </span><br><span class="line">  	</span><br><span class="line">	  &#125;	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void merge_sort(int a[],int l,int r)</span><br><span class="line">&#123;</span><br><span class="line">    if(l&gt;=r)</span><br><span class="line">	return ;</span><br><span class="line">	</span><br><span class="line">	int mid=(l+r)/2;</span><br><span class="line">	</span><br><span class="line">	merge_sort(a,l,mid);</span><br><span class="line">	merge_sort(a,mid+1,r);</span><br><span class="line">	merge(a,l,r,mid);	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">void mergesort(int a[],int l,int r)</span><br><span class="line">&#123;</span><br><span class="line">	merge_sort(a,l,r-1);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a[105],n,i;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	</span><br><span class="line">	for(i=0;i&lt;n;i++)</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">	</span><br><span class="line">	mergesort(a,0,n);</span><br><span class="line">	</span><br><span class="line">	for(i=0;i&lt;n;i++)</span><br><span class="line">	printf(&quot;%d &quot;,a[i]);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	return 0;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -471,8 +465,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -555,6 +558,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法复杂度"><span class="nav-number">1.</span> <span class="nav-text">算法复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心思想：分治。"><span class="nav-number">2.</span> <span class="nav-text">核心思想：分治。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下面我们来看归并排序的思路（先讲思路再来具体讲归并的细节）："><span class="nav-number">3.</span> <span class="nav-text">下面我们来看归并排序的思路（先讲思路再来具体讲归并的细节）：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#归并排序（Merge-Sort）"><span class="nav-number">3.1.</span> <span class="nav-text">归并排序（Merge Sort）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当我们要排序这样一个数组的时候，归并排序法首先将这个数组分成一半。如图："><span class="nav-number">3.2.</span> <span class="nav-text">当我们要排序这样一个数组的时候，归并排序法首先将这个数组分成一半。如图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#然后想办法把左边的数组给排序，右边的数组给排序，之后呢再将它们归并起来。当然了当我们对左边的数组和右边的素组进行排序的时候，再分别将左边的数组和右边的数组分成一半，然后对每一个部分先排序，再归并。如图："><span class="nav-number">3.3.</span> <span class="nav-text">然后想办法把左边的数组给排序，右边的数组给排序，之后呢再将它们归并起来。当然了当我们对左边的数组和右边的素组进行排序的时候，再分别将左边的数组和右边的数组分成一半，然后对每一个部分先排序，再归并。如图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于上面的每一个部分呢，我们依然是先将他们分半，再归并，如图："><span class="nav-number">3.4.</span> <span class="nav-text">对于上面的每一个部分呢，我们依然是先将他们分半，再归并，如图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分到一定细度的时候，每一个部分就只有一个元素了，那么我们此时不用排序，对他们进行一次简单的归并就好了。如图："><span class="nav-number">3.5.</span> <span class="nav-text">分到一定细度的时候，每一个部分就只有一个元素了，那么我们此时不用排序，对他们进行一次简单的归并就好了。如图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并到上一个层级之后继续归并，归并到更高的层级，如图："><span class="nav-number">3.6.</span> <span class="nav-text">归并到上一个层级之后继续归并，归并到更高的层级，如图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直至最后归并完成。"><span class="nav-number">3.7.</span> <span class="nav-text">直至最后归并完成。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#归并细节："><span class="nav-number">4.</span> <span class="nav-text">归并细节：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整体来讲我们要使用三个索引来在数组内进行追踪。"><span class="nav-number">4.1.</span> <span class="nav-text">整体来讲我们要使用三个索引来在数组内进行追踪。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#蓝色的箭头表示最终选择的位置，而红色的箭头表示两个数组当前要比较的元素，比如当前是2与1比较，1比2小，所以1放到蓝色的箭头中，蓝色的箭头后移，1的箭头后移。"><span class="nav-number">4.2.</span> <span class="nav-text">蓝色的箭头表示最终选择的位置，而红色的箭头表示两个数组当前要比较的元素，比如当前是2与1比较，1比2小，所以1放到蓝色的箭头中，蓝色的箭头后移，1的箭头后移。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#然后2与4比较，2比4小那么2到蓝色的箭头中，蓝色箭头后移，2后移，继续比较……"><span class="nav-number">4.3.</span> <span class="nav-text">然后2与4比较，2比4小那么2到蓝色的箭头中，蓝色箭头后移，2后移，继续比较…….</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并思路就是这样了，最后唯一需要注意的是那个先比较完的话，那么剩下的直接不需要比较，把后面的直接移上去就可以了，这个需要提前判定一下。"><span class="nav-number">4.4.</span> <span class="nav-text">归并思路就是这样了，最后唯一需要注意的是那个先比较完的话，那么剩下的直接不需要比较，把后面的直接移上去就可以了，这个需要提前判定一下。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#归并排序代码如下："><span class="nav-number">5.</span> <span class="nav-text">归并排序代码如下：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
